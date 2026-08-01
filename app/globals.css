@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Light Mode — Slate & Indigo */
+  --color-bg: 255 255 255; /* #FFFFFF */
+  --color-fg: 15 23 42; /* #0F172A */
+  --color-accent: 79 70 229; /* #4F46E5 */
+  --color-accent-fg: 255 255 255;
+}
+
+.dark {
+  /* Dark Mode — Zinc & Emerald */
+  --color-bg: 9 9 11; /* #09090B */
+  --color-fg: 244 244 245; /* #F4F4F5 */
+  --color-accent: 16 185 129; /* #10B981 */
+  --color-accent-fg: 9 9 11;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-fg));
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: rgb(var(--color-accent));
+  color: rgb(var(--color-accent-fg));
+}
+
+/* subtle grid backdrop, adapts to theme via currentColor-like var */
+.grid-backdrop::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgb(var(--color-fg) / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--color-fg) / 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 10%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, rgb(var(--color-accent)), rgb(var(--color-accent) / 0.55));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
