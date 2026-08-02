@@ -5,7 +5,7 @@ const facts: [string, string, boolean?][] = [
   ["role", "Full-Stack & AI Engineer"],
   ["based in", "India"],
   ["education", "B.Tech, CS & IT"],
-  ["focus", "Web Dev · AI/ML · Data Analysis · Gen AI"],
+  ["focus", "Web Dev, AI/ML, Data Analysis, Gen AI"],
   ["status", "Open to work", true],
 ];
 
